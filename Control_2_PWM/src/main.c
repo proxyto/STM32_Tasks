@@ -45,33 +45,33 @@ int main(void)
 
    while(1)
   {
-   // Push button - if pressed it will change direction of motor anti clock wise
-	if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_5))
-	 {
-	  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1);
-	  HAL_Delay(3000); //Delay for 3 seconds to stop motor properly
-	  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_2);
+   //Push button - if pressed it will change direction of motor anti clock wise
+   if(HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_5))
+  {
+   HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1);
+   HAL_Delay(3000); //Delay for 3 seconds to stop motor properly
+   HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_2);
 
-	  //1st PWM in anti clock wise rotation
-	  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_3,75); // <----- motor at 75 % voltage
-	  HAL_Delay(2000);
-	  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_3,50); // <----- motor at 50 % voltage
-	  HAL_Delay(2000);
-	  	  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_3,25); // <----- motor at 25 % voltage
-	 }else
-	 {
-	  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1);
-	  HAL_Delay(3000); //Delay for 3 seconds to stop motor properly
-	  HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_2);
+   //1st PWM in anti clock wise rotation
+   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_3,75); // <----- motor at 75 % voltage
+   HAL_Delay(2000);
+   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_3,50); // <----- motor at 50 % voltage
+   HAL_Delay(2000);
+   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_3,25); // <----- motor at 25 % voltage
+  }else
+  {
+   HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_1);
+   HAL_Delay(3000); //Delay for 3 seconds to stop motor properly
+   HAL_GPIO_TogglePin(GPIOA,GPIO_PIN_2);
 
-	  //2nd PWM in clock wise rotation
-	  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,75); // <----- motor at 75 % voltage
-	  HAL_Delay(2000);
-	  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,50); // <----- motor at 50 % voltage
-	  HAL_Delay(2000);
-	  __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,25); // <----- motor at 25 % voltage
-	 }
+   //2nd PWM in clock wise rotation
+   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,75); // <----- motor at 75 % voltage
+   HAL_Delay(2000);
+   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,50); // <----- motor at 50 % voltage
+   HAL_Delay(2000);
+   __HAL_TIM_SET_COMPARE(&htim3,TIM_CHANNEL_4,25); // <----- motor at 25 % voltage
   }
+ }
 }
 
 /**
